@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noctarflix</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">StreamPrime</div>
+      <div class="actions">
+        <button id="loginBtn" class="secondary">Entrar</button>
+        <button id="subscribeBtn" class="primary">Assinar agora</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <p class="overline">Destaque do dia</p>
+          <h1>Planeta Rubi</h1>
+          <p>
+            Exploradores descobrem um mundo coberto de cristais e precisam decidir se compartilham ou
+            protegem o segredo.
+          </p>
+          <div class="hero-actions">
+            <button id="watchBtn" class="primary">Assistir agora</button>
+            <button class="secondary">Ver detalhes</button>
+          </div>
+        </div>
+        <div class="hero-banner"></div>
+      </section>
+
+      <section class="carousel" id="recommended">
+        <div class="carousel-header">
+          <h2>Recomendados para você</h2>
+          <span class="service-tag">CATALOG</span>
+        </div>
+        <div class="cards" id="recommendedCards"></div>
+      </section>
+
+      <section class="carousel">
+        <div class="carousel-header">
+          <h2>Em alta</h2>
+          <span class="service-tag">CATALOG</span>
+        </div>
+        <div class="cards placeholder-row"></div>
+      </section>
+
+      <section class="carousel">
+        <div class="carousel-header">
+          <h2>Continuar assistindo</h2>
+          <span class="service-tag">STREAMING</span>
+        </div>
+        <div class="cards placeholder-row"></div>
+      </section>
+    </main>
+
+    <footer class="footer">Suporte · Termos · Idiomas</footer>
+
+    <dialog id="authDialog">
+      <form id="authForm">
+        <h3>Entrar ou criar conta</h3>
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Senha" required />
+        <div class="dialog-actions">
+          <button type="submit" class="primary">Entrar</button>
+          <button type="button" id="closeDialog">Cancelar</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

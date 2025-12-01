@@ -1,0 +1,58 @@
+version: "3.9"
+services:
+  gateway:
+    build: ./backend
+    command: uvicorn gateway.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    environment:
+      AUTH_URL: http://auth:5000
+      CATALOG_URL: http://catalog:5001
+      STREAMING_URL: http://streaming:5002
+      BILLING_URL: http://billing:5003
+      NOTIFY_URL: http://notify:5005
+    depends_on:
+      - auth
+      - catalog
+      - streaming
+      - billing
+      - notify
+
+  auth:
+    build: ./backend
+    command: uvicorn auth_service.main:app --host 0.0.0.0 --port 5000
+    ports:
+      - "5000:5000"
+
+  catalog:
+    build: ./backend
+    command: uvicorn catalog_service.main:app --host 0.0.0.0 --port 5001
+    ports:
+      - "5001:5001"
+
+  streaming:
+    build: ./backend
+    command: uvicorn streaming_service.main:app --host 0.0.0.0 --port 5002
+    ports:
+      - "5002:5002"
+    depends_on:
+      - monitor
+
+  billing:
+    build: ./backend
+    command: uvicorn billing_service.main:app --host 0.0.0.0 --port 5003
+    ports:
+      - "5003:5003"
+
+  monitor:
+    build: ./backend
+    command: uvicorn monitor_service.main:app --host 0.0.0.0 --port 5004
+    ports:
+      - "5004:5004"
+
+  notify:
+    build: ./backend
+    command: uvicorn notify_service.main:app --host 0.0.0.0 --port 5005
+    ports:
+      - "5005:5005"
+
